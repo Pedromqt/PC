@@ -1,2 +1,4 @@
-# PC
-Cadeira do 3º ano da licenciatura em Engenharia Informática - Protocolos de Comunicação
+## PC
+### Cadeira do 3º ano da licenciatura em Engenharia Informática - Protocolos de Comunicação
+
+Os objetivos centrais da disciplina são o estudo e compreensão dos aspetos protocolares dos modernos sistemas de comunicação, sendo dada especial ênfase ao ambiente protocolar da Internet, tendo em vista um conhecimento das principais questões que caracterizam e condicionam os serviços e aplicações. Nesta unidade curricular são detalhados os principais aspetos e mecanismos de endereçamento, encaminhamento e transporte de unidades protocolares de dados em redes TCP/IP. Para além disso, serão também abordados aspetos de Qualidade de Serviço, bem como os protocolos subjacentes às principais aplicações. Ao longo da disciplina os alunos adquirem competências de compreensão, análise e síntese das matérias abordadas, raciocínio crítico, organização e planificação, resolução de problemas, trabalho em grupo, aprendizagem autónoma, e aplicação prática de conhecimentos.
