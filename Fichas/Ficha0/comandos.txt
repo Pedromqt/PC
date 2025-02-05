@@ -1,0 +1,10 @@
+Para configurar a rede entre o PC e o router:
+
+
+
+
+
+
+
+Para configurar entre o router e o servidor TFTP:
+
