@@ -1,10 +1,24 @@
-Para configurar a rede entre o PC e o router:
+Ordem: Pc fixo da sala -> router cisco -> Servidor da sala
 
+abrir hyperterminal
+enable -> entrar em modo priveligiado
+sh run -> ver configurações do router
+conf t -> modo de configuração
+interface ethernet0
+ip address 192.168.23.254 255.255.255.0
+no shutdown -> não desligar interface
+Configurar host: Painel de controlo -> Network and sharing center -> Ethernet -> TCP/IPv4 -> alterar endereço ip para o ip do PC  e alterar a default gateway para o ip Ethernet do router
+Para testar: Entrar no command prompt e dar ping ip ethernet do router
 
+Para configurar a rede entre o router e o servidor:
+Ligar o cabo no fastEthernet e na porta D12 do server
+conf t
+interface fastEthernet0
+ip address 10.254.0.3 255.255.255.0
+no shutdown
+Para testar: hyperterminal -> ping 10.254.0.10 (ip do servidor)
 
+Até agora: Ambas as redes funcionam e já foram testadas.
 
-
-
-
-Para configurar entre o router e o servidor TFTP:
-
+Para testar do PC fixo da sala até ao servidor: Entrar no command prompt e dar ping a 10.254.0.10 
+Sucesso!!!!
