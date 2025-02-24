@@ -1,0 +1,40 @@
+ex1
+
+enable
+configure terminal
+
+interface Ethernet0 
+ip adsress 192.168.20.254 255.255.255.0
+
+# Configurar o serviço DHCP
+ip dhcp excluded-address 192.168.20.1 192.168.20.31
+ip dhcp excluded-address 192.168.20.224 192.168.20.254
+
+ip dhcp pool GRUPO-3
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.254
+
+ex2
+ip dhcp pool GRUPO-3
+
+dns-server 192.168.20.31 10.254.0.252
+domain-name net-3.dei.uc.pt
+netbios-name-server 10.1.0.253
+
+ex3
+
+lease 0 0 2
+debug ip dhcp server
+
+ex4
+
+R1(config)#ip dhcp pool PJ
+R1(dhcp-config)#host 192.168.20.38 255.255.255.0
+R1(dhcp-config)#client-identifier (MAC ADRESS)
+R1(dhcp-config)#client-name gostamosdePC
+R1(dhcp-config)#default-router 192.168.20.254
+R1(dhcp-config)#domain-name net-3.dei.uc.pt
+R1(dhcp-config)#dns-server 192.168.20.2
+R1(config)#end
+
+
