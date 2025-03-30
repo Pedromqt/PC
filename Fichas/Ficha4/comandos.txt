@@ -1,0 +1,49 @@
+1.
+Router R1:
+router ospf 100
+network 172.16.(X+1).0 0.0.0.255 area 0
+network 172.16.(X+2).0 0.0.0.255 area 0
+network 172.16.(X+3).0 0.0.0.255 area 0
+
+Router R2:
+router ospf 100
+network 172.16.(X+2).0 0.0.0.255 area 0
+network 192.168.(X+1).0 0.0.0.255 area 1
+
+Router R3:
+router ospf 100
+network 192.168.(X+1).0 0.0.0.255 area 1
+network 192.168.(X+2).0 0.0.0.255 area 1
+
+Router R4:
+router ospf 100
+network 172.16.(X+3).0 0.0.0.255 area 0
+network 10.1.X.0 0.0.0.255 area 2
+
+'show ip route' em cada um
+'show ip ospf' neighbor
+'ping'
+
+2.
+entrar em R2
+router ospf 100
+area 1 range 192.168.0.0 255.255.0.0
+
+'show ip route' novamente em todos os routers
+
+3.
+R2-Router ABR
+router ospf 100
+area 1 nssa
+
+R3- Router RIP
+router rip
+version 2
+network 192.168.(X+2).0
+router ospf 100
+redistribute rip subnets
+network 192.168.(X+1).0 0.0.0.255 area 1
+area 1 nssa
+
+'show ip route' r2 e r3
+'ping'
