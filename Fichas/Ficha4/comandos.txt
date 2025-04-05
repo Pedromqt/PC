@@ -1,3 +1,5 @@
+-->>>Primeiro de tudo, motar tudo e configurar as interfaces todas(ver imagem)
+
 1.
 Router R1:
 router ospf 100
