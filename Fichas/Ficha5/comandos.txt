@@ -1,0 +1,117 @@
+9600 bits/s
+8 data bits
+no parity
+1 stop bits
+no flow control
+
+Exercício 1
+
+R1
+
+interface FastEthernet0/1
+ ip address 192.168.(X+3).1 255.255.255.0
+ no shutdown
+
+interface Ethernet0
+ ip address 172.16.X.2 255.255.255.0
+ no shutdown
+
+router ospf 90
+ network 192.168.(X+3).0 0.0.0.255 area 0
+
+router bgp 3000
+ no synchronization
+ bgp dampening
+ redistribute ospf 90
+
+ neighbor 192.168.(X+3).2 remote-as 3000
+ neighbor 192.168.(X+3).2 next-hop-self
+ neighbor 172.16.X.1 remote-as 1000
+ no auto-summary
+
+end
+
+R2
+
+interface FastEthernet0/1
+ ip address 192.168.(X+3).2 255.255.255.0
+ no shutdown
+
+interface Ethernet0
+ ip address 172.30.X.2 255.255.255.0
+ no shutdown
+
+router ospf 90
+ network 192.168.(X+3).0 0.0.0.255 area 0
+
+router bgp 3000
+ no synchronization
+ bgp dampening
+ redistribute ospf 90
+ neighbor 192.168.(X+3).1 remote-as 3000
+ neighbor 192.168.(X+3).1 next-hop-self
+ neighbor 172.30.X.1 remote-as 2000
+ no auto-summary
+
+ISP1
+
+
+interface FastEthernet0/0
+ ip address 192.168.(X+1).1 255.255.255.0
+ no shutdown
+
+interface FastEthernet0/1
+ ip address 10.X.1.1 255.255.255.0
+ no shutdown
+
+interface FastEthernet1/0
+ ip address 172.16.X.1 255.255.255.0
+ no shutdown
+
+router ospf 90
+ network 192.168.(X+1).0 0.0.0.255 area 0
+
+router bgp 1000
+ bgp dampening
+ redistribute ospf 90
+ neighbor 172.16.X.2 remote-as 3000
+ neighbor 10.X.1.2 remote-as 2000 (NAO TENHO A CERTEZA)
+ no auto-summary
+
+end
+
+ISP2 
+
+interface FastEthernet0/0
+ ip address 192.168.(X+2).1 255.255.255.0
+ no shutdown
+
+interface FastEthernet0/1
+ ip address 10.X.1.2 255.255.255.0
+ no shutdown
+
+interface FastEthernet1/0
+ ip address 172.30.X.1 255.255.255.0
+ no shutdown
+
+router ospf 90
+ network 192.168.(X+2).0 0.0.0.255 area 0
+
+router bgp 2000
+ bgp dampening
+ redistribute ospf 90
+ neighbor 172.30.X.2 remote-as 3000
+ neighbor 10.X.1.1 remote-as 1000 (NAO TENHO A CERTEZA)
+ no auto-summary
+end
+
+Exercício 2
+
+route-map PREF permit 10
+ set local-preference 500
+
+router bgp 3000
+ neighbor 192.168.(X+3).1 route-map PREF IN
+
+
+end
