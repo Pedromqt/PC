@@ -102,6 +102,8 @@ router bgp 2000
  redistribute ospf 90
  neighbor 172.30.X.2 remote-as 3000
  neighbor 10.X.1.1 remote-as 1000 (NAO TENHO A CERTEZA)
+ network 172.30.X.2
+ network 10.X.1.1 
  no auto-summary
 end
 
